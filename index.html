@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VEX V5 高中組 聖路易斯機器人競賽 行程規劃</title>
+    <meta name="description" content="2026年VEX V5高中組機器人世界錦標賽聖路易斯行程規劃 - 台灣代表隊出征美國">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Noto+Sans+TC:wght@300;400;700;900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --red: #d63031;
+            --gold: #e17055;
+            --dark: #f5f6fa;
+            --dark2: #dfe6e9;
+            --teal: #00b894;
+            --light: #2d3436;
+            --gray: #636e72;
+            --card-bg: #ffffff;
+            --accent: #0984e3;
+            --purple: #6c5ce7;
+            --green: #00b894;
+            --bg-main: #f0f2f5;
+            --border-light: rgba(0, 0, 0, 0.08);
+            --text-primary: #2d3436;
+            --text-secondary: #636e72;
+            --text-muted: #b2bec3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg-main);
+            color: var(--text-primary);
+            font-family: 'Noto Sans TC', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0984e3 0%, #00b894 50%, #6c5ce7 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+            overflow: hidden;
+            color: #fff;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+            top: -100px;
+            right: -100px;
+            border-radius: 50%;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            bottom: -50px;
+            left: -50px;
+            border-radius: 50%;
+            animation: pulse 5s ease-in-out infinite reverse;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.6;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+        }
+
+        .hero-badge {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            color: #fff;
+            text-transform: uppercase;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            padding: 6px 16px;
+            border-radius: 2px;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .hero-level {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            color: #fff;
+            text-transform: uppercase;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 6px 20px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+            animation: fadeInDown 0.8s ease 0.1s both;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            font-weight: 900;
+            line-height: 1.05;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 0.8s ease 0.2s both;
+            color: #fff;
+        }
+
+        .hero-title span.red {
+            color: #fdcb6e;
+        }
+
+        .hero-title span.gold {
+            color: #ffeaa7;
+        }
+
+        .hero-sub {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 20px;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .hero-dates {
+            display: flex;
+            gap: 30px;
+            margin-top: 40px;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 0.8s ease 0.6s both;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .date-pill {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            padding: 10px 24px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.85rem;
+            backdrop-filter: blur(10px);
+            color: #fff;
+        }
+
+        .date-pill .label {
+            color: #ffeaa7;
+            font-size: 0.65rem;
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        /* ROBOT ICON */
+        .robot-icon {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* SCROLL INDICATOR */
+        .scroll-hint {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 3px;
+            z-index: 1;
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 0.3
+            }
+
+            50% {
+                opacity: 1
+            }
+        }
+
+        /* OVERVIEW STATS */
+        .stats-bar {
+            background: var(--red);
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            color: #fff;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat .num {
+            font-family: 'Space Mono', monospace;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .stat .lbl {
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            opacity: 0.9;
+            text-transform: uppercase;
+        }
+
+        /* FLIGHT INFO */
+        .flight-info {
+            background: linear-gradient(135deg, #2d3436 0%, #636e72 100%);
+            padding: 50px 20px;
+            color: #fff;
+        }
+
+        .flight-info .section-header h2 {
+            color: #fff;
+        }
+
+        .flight-info .section-header p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .flight-info .section-header .line {
+            background: #ffeaa7;
+        }
+
+        .flight-grid {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .flight-card {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            padding: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .flight-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+        }
+
+        .flight-card.outbound::before {
+            background: #00b894;
+        }
+
+        .flight-card.inbound::before {
+            background: #a29bfe;
+        }
+
+        .flight-direction {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .flight-card.outbound .flight-direction {
+            color: #55efc4;
+        }
+
+        .flight-card.inbound .flight-direction {
+            color: #a29bfe;
+        }
+
+        .flight-route {
+            font-size: 1.4rem;
+            font-weight: 900;
+            margin-bottom: 16px;
+            color: #fff;
+        }
+
+        .flight-detail {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 0.85rem;
+            color: #dfe6e9;
+        }
+
+        .flight-detail .fd-label {
+            color: #b2bec3;
+            font-size: 0.8rem;
+        }
+
+        /* TIMELINE */
+        .timeline-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            font-weight: 900;
+            color: var(--text-primary);
+        }
+
+        .section-header .line {
+            width: 60px;
+            height: 3px;
+            background: var(--teal);
+            margin: 16px auto;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* DAY CARDS */
+        .day-card {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 0;
+            margin-bottom: 3px;
+            position: relative;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+        }
+
+        .day-date {
+            background: #fff;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            border-left: 4px solid var(--teal);
+            position: relative;
+        }
+
+        .day-card.competition .day-date {
+            border-left-color: var(--red);
+        }
+
+        .day-card.chicago .day-date {
+            border-left-color: var(--gold);
+        }
+
+        .day-card.return .day-date {
+            border-left-color: var(--purple);
+        }
+
+        .day-card.explore .day-date {
+            border-left-color: var(--green);
+        }
+
+        .day-num {
+            font-family: 'Space Mono', monospace;
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1;
+            color: var(--teal);
+        }
+
+        .day-card.competition .day-num {
+            color: var(--red);
+        }
+
+        .day-card.chicago .day-num {
+            color: var(--gold);
+        }
+
+        .day-card.return .day-num {
+            color: var(--purple);
+        }
+
+        .day-card.explore .day-num {
+            color: var(--green);
+        }
+
+        .day-month {
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            color: #999;
+            text-transform: uppercase;
+            font-family: 'Space Mono', monospace;
+        }
+
+        .day-weekday {
+            font-size: 0.65rem;
+            color: #aaa;
+            margin-top: 4px;
+            font-family: 'Space Mono', monospace;
+        }
+
+        .day-content {
+            background: #fff;
+            padding: 30px;
+            border-left: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .day-tag {
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border-radius: 2px;
+            display: inline-block;
+            margin-bottom: 10px;
+            font-family: 'Space Mono', monospace;
+        }
+
+        .tag-travel {
+            background: rgba(0, 184, 148, 0.1);
+            color: #00b894;
+        }
+
+        .tag-comp {
+            background: rgba(214, 48, 49, 0.1);
+            color: var(--red);
+        }
+
+        .tag-explore {
+            background: rgba(225, 112, 85, 0.1);
+            color: var(--gold);
+        }
+
+        .tag-return {
+            background: rgba(108, 92, 231, 0.1);
+            color: var(--purple);
+        }
+
+        .tag-stl {
+            background: rgba(0, 184, 148, 0.1);
+            color: var(--green);
+        }
+
+        .tag-prep {
+            background: rgba(9, 132, 227, 0.1);
+            color: var(--accent);
+        }
+
+        .day-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .day-items {
+            list-style: none;
+        }
+
+        .day-items li {
+            padding: 6px 0;
+            padding-left: 18px;
+            position: relative;
+            color: #555;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .day-items li::before {
+            content: '›';
+            position: absolute;
+            left: 0;
+            color: var(--teal);
+            font-weight: 700;
+        }
+
+        .day-card.competition .day-items li::before {
+            color: var(--red);
+        }
+
+        .day-card.chicago .day-items li::before {
+            color: var(--gold);
+        }
+
+        .day-card.explore .day-items li::before {
+            color: var(--green);
+        }
+
+        .day-card.return .day-items li::before {
+            color: var(--purple);
+        }
+
+        .time-badge {
+            display: inline-block;
+            background: rgba(9, 132, 227, 0.08);
+            border: 1px solid rgba(9, 132, 227, 0.15);
+            border-radius: 4px;
+            padding: 1px 8px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            margin-right: 6px;
+            color: var(--accent);
+        }
+
+        .note-box {
+            background: rgba(0, 184, 148, 0.06);
+            border: 1px solid rgba(0, 184, 148, 0.2);
+            border-radius: 4px;
+            padding: 12px 16px;
+            margin-top: 14px;
+            font-size: 0.82rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .note-box.red-note {
+            background: rgba(214, 48, 49, 0.06);
+            border-color: rgba(214, 48, 49, 0.2);
+        }
+
+        .note-box.gold-note {
+            background: rgba(225, 112, 85, 0.06);
+            border-color: rgba(225, 112, 85, 0.2);
+        }
+
+        .note-box .note-icon {
+            margin-right: 6px;
+        }
+
+        /* SECTION DIVIDERS */
+        .phase-divider {
+            text-align: center;
+            padding: 30px 20px;
+            position: relative;
+        }
+
+        .phase-divider::before {
+            content: '';
+            position: absolute;
+            left: 10%;
+            right: 10%;
+            top: 50%;
+            height: 1px;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .phase-label {
+            display: inline-block;
+            background: var(--bg-main);
+            padding: 8px 24px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            color: #999;
+            position: relative;
+            z-index: 1;
+            text-transform: uppercase;
+        }
+
+        /* MAP SECTION */
+        .map-section {
+            background: #fff;
+            padding: 60px 20px;
+            text-align: center;
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .route-visual {
+            max-width: 800px;
+            margin: 40px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            flex-wrap: wrap;
+        }
+
+        .route-city {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .route-city .city-icon {
+            font-size: 2.5rem;
+        }
+
+        .route-city .city-name {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-top: 8px;
+            color: var(--text-primary);
+        }
+
+        .route-city .city-sub {
+            font-size: 0.7rem;
+            color: #999;
+            letter-spacing: 1px;
+        }
+
+        .route-arrow {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 10px;
+            min-width: 80px;
+        }
+
+        .arrow-line {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--teal), var(--gold));
+            position: relative;
+        }
+
+        .arrow-line::after {
+            content: '▶';
+            position: absolute;
+            right: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gold);
+            font-size: 0.7rem;
+        }
+
+        .arrow-line.reverse {
+            background: linear-gradient(90deg, var(--gold), var(--teal));
+        }
+
+        .arrow-line.reverse::after {
+            content: '▶';
+            color: var(--teal);
+        }
+
+        .route-label {
+            font-size: 0.65rem;
+            color: #999;
+            margin-top: 8px;
+            font-family: 'Space Mono', monospace;
+            letter-spacing: 1px;
+        }
+
+        /* TIPS SECTION */
+        .tips-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .tip-card {
+            background: #fff;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            padding: 28px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+        }
+
+        .tip-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .tip-icon {
+            font-size: 2rem;
+            margin-bottom: 14px;
+        }
+
+        .tip-title {
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .tip-text {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            line-height: 1.7;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #2d3436;
+            text-align: center;
+            padding: 40px 20px;
+            color: #b2bec3;
+            font-size: 0.75rem;
+            font-family: 'Space Mono', monospace;
+            letter-spacing: 2px;
+        }
+
+        /* TIPS BG */
+        .tips-bg {
+            background: var(--bg-main);
+            padding: 60px 20px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            .day-card {
+                grid-template-columns: 80px 1fr;
+            }
+
+            .day-num {
+                font-size: 1.8rem;
+            }
+
+            .stats-bar {
+                gap: 30px;
+            }
+
+            .flight-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="robot-icon">🤖</div>
+        <div class="hero-badge">VEX V5 ROBOTICS WORLD CHAMPIONSHIP</div>
+        <div class="hero-level">🏫 HIGH SCHOOL · 高中組</div>
+        <h1 class="hero-title">
+            <span class="red">台灣</span> → 芝加哥<br>→ <span class="gold">聖路易斯</span>
+        </h1>
+        <p class="hero-sub">2026年春季遠征 · St. Louis, Missouri</p>
+        <div class="hero-dates">
+            <div class="date-pill">
+                <span class="label">出發</span>
+                4月17日 (五)
+            </div>
+            <div class="date-pill">
+                <span class="label">比賽</span>
+                4月21–24日
+            </div>
+            <div class="date-pill">
+                <span class="label">回程</span>
+                4月27日 (一)
+            </div>
+        </div>
+        <div class="scroll-hint">▼ 向下滾動查看行程 ▼</div>
+    </section>
+
+    <!-- STATS BAR -->
+    <div class="stats-bar">
+        <div class="stat">
+            <div class="num">11</div>
+            <div class="lbl">天總行程</div>
+        </div>
+        <div class="stat">
+            <div class="num">4</div>
+            <div class="lbl">天比賽</div>
+        </div>
+        <div class="stat">
+            <div class="num">2</div>
+            <div class="lbl">大城市</div>
+        </div>
+        <div class="stat">
+            <div class="num">~480km</div>
+            <div class="lbl">芝加哥→聖路易公路</div>
+        </div>
+    </div>
+
+    <!-- FLIGHT INFO -->
+    <div class="flight-info">
+        <div class="section-header">
+            <h2>✈ 航班資訊</h2>
+            <div class="line"></div>
+            <p>長榮航空直飛芝加哥 · 已確認航班時刻</p>
+        </div>
+        <div class="flight-grid">
+            <div class="flight-card outbound">
+                <div class="flight-direction">去程 Outbound</div>
+                <div class="flight-route">🇹🇼 TPE → ORD 🇺🇸</div>
+                <div class="flight-detail">
+                    <span class="fd-label">航班</span>
+                    <span>長榮 BR56</span>
+                </div>
+                <div class="flight-detail">
+                    <span class="fd-label">日期</span>
+                    <span>2026/04/17 (五)</span>
+                </div>
+                <div class="flight-detail">
+                    <span class="fd-label">起飛</span>
+                    <span>20:00 台北時間</span>
+                </div>
+                <div class="flight-detail">
+                    <span class="fd-label">抵達</span>
+                    <span>19:35 芝加哥時間（同日）</span>
+                </div>
+                <div class="flight-detail">
+                    <span class="fd-label">飛行時間</span>
+                    <span>約 13 小時 35 分</span>
+                </div>
+                <div class="flight-detail">
+                    <span class="fd-label">機型</span>
+                    <span>Boeing 777-300ER</span>
+                </div>
+            </div>
+            <div class="flight-card inbound">
+                <div class="flight-direction">回程 Return</div>
+                <div class="flight-route">🇺🇸 ORD → TPE 🇹🇼</div>
+                <div class="flight-detail">
+                    <span class="fd-label">航班</span>
+                    <span>長榮 BR55</span>
+                </div>
+                <div class="flight-detail">
+                    <span class="fd-label">日期</span>
+                    <span>2026/04/27 (一)</span>
+                </div>
+                <div class="flight-detail">
+                    <span class="fd-label">起飛</span>
+                    <span>23:30 芝加哥時間</span>
+                </div>
+                <div class="flight-detail">
+                    <span class="fd-label">抵達</span>
+                    <span>05:25 台北時間（+2日 = 4/29）</span>
+                </div>
+                <div class="flight-detail">
+                    <span class="fd-label">飛行時間</span>
+                    <span>約 15 小時 55 分</span>
+                </div>
+                <div class="flight-detail">
+                    <span class="fd-label">機型</span>
+                    <span>Boeing 777-300ER</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ROUTE VISUAL -->
+    <div class="map-section">
+        <div class="section-header">
+            <h2>行程路線</h2>
+            <div class="line"></div>
+            <p>台灣直飛芝加哥 · 公路轉往聖路易斯 · 回程芝加哥觀光</p>
+        </div>
+        <div class="route-visual">
+            <div class="route-city">
+                <div class="city-icon">🇹🇼</div>
+                <div class="city-name">台灣 TPE</div>
+                <div class="city-sub">4/17 出發</div>
+            </div>
+            <div class="route-arrow">
+                <div class="arrow-line"></div>
+                <div class="route-label">✈ BR56 ~14hr</div>
+            </div>
+            <div class="route-city">
+                <div class="city-icon">🏙️</div>
+                <div class="city-name">Chicago ORD</div>
+                <div class="city-sub">4/17 住一晚</div>
+            </div>
+            <div class="route-arrow">
+                <div class="arrow-line"></div>
+                <div class="route-label">� 遊覽車 ~5hr</div>
+            </div>
+            <div class="route-city">
+                <div class="city-icon">🏛️</div>
+                <div class="city-name">St. Louis</div>
+                <div class="city-sub">4/18-25 比賽城市</div>
+            </div>
+            <div class="route-arrow">
+                <div class="arrow-line reverse"></div>
+                <div class="route-label">� 遊覽車 ~5hr</div>
+            </div>
+            <div class="route-city">
+                <div class="city-icon">🏙️</div>
+                <div class="city-name">Chicago ORD</div>
+                <div class="city-sub">4/25-27 觀光+回程</div>
+            </div>
+            <div class="route-arrow">
+                <div class="arrow-line reverse"></div>
+                <div class="route-label">✈ BR55 ~16hr</div>
+            </div>
+            <div class="route-city">
+                <div class="city-icon">🇹🇼</div>
+                <div class="city-name">台灣 TPE</div>
+                <div class="city-sub">4/29 抵達</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TIMELINE -->
+    <div class="timeline-section">
+        <div class="section-header">
+            <h2>每日行程詳表</h2>
+            <div class="line"></div>
+            <p>高中組 V5 — 11天完整行程</p>
+        </div>
+
+        <!-- ==================== DAY 1: 4/17 ==================== -->
+        <div class="phase-divider">
+            <span class="phase-label">✈ 第一階段 · 飛行日</span>
+        </div>
+
+        <div class="day-card chicago">
+            <div class="day-date">
+                <div class="day-num">17</div>
+                <div class="day-month">April</div>
+                <div class="day-weekday">FRI</div>
+            </div>
+            <div class="day-content">
+                <span class="day-tag tag-travel">DAY 1 · 出發日</span>
+                <div class="day-title">🛫 台灣 → 芝加哥 O'Hare (ORD)</div>
+                <ul class="day-items">
+                    <li><span class="time-badge">17:00</span> 桃園國際機場第二航廈集合，辦理登機手續、托運行李（機器人設備箱）</li>
+                    <li><span class="time-badge">20:00</span> 搭乘<strong>長榮航空 BR56</strong> 直飛芝加哥 O'Hare（飛行約 13.5 小時）
+                    </li>
+                    <li><span class="time-badge">19:35</span> 抵達芝加哥 ORD（當地時間同日晚上，時差-13小時）</li>
+                    <li>入境美國、通關、提領行李及機器人設備箱</li>
+                    <li>搭乘遊覽車前往機場附近飯店入住休息</li>
+                </ul>
+                <div class="note-box">
+                    <span class="note-icon">💡</span> 因抵達芝加哥已接近晚上 8 點，建議先在機場附近住一晚，隔天再出發前往聖路易斯。推薦 ORD 機場周邊 Holiday Inn /
+                    Hilton Garden Inn 等。
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== DAY 2: 4/18 ==================== -->
+        <div class="day-card">
+            <div class="day-date">
+                <div class="day-num">18</div>
+                <div class="day-month">April</div>
+                <div class="day-weekday">SAT</div>
+            </div>
+            <div class="day-content">
+                <span class="day-tag tag-travel">DAY 2 · 移動日</span>
+                <div class="day-title">� 芝加哥 → 聖路易斯 · 抵達備戰基地</div>
+                <ul class="day-items">
+                    <li><span class="time-badge">08:00</span> 飯店早餐後退房</li>
+                    <li><span class="time-badge">09:00</span> 搭乘遊覽車出發前往聖路易斯，沿 I-55 South 南下（車程約 4.5~5 小時）</li>
+                    <li>途中可於 Springfield, IL 休息站停靠，參觀林肯故居或用午餐</li>
+                    <li><span class="time-badge">14:00</span> 預計抵達聖路易斯，入住飯店（建議選靠近比賽場館區域）</li>
+                    <li>下午稍作休息、調整時差</li>
+                    <li>傍晚熟悉飯店周邊環境、購買日用品與飲食</li>
+                    <li><strong>聯繫當地高中隊伍</strong> 確認隔天練習安排</li>
+                </ul>
+                <div class="note-box">
+                    <span class="note-icon">�</span> 全程搭乘包租遊覽車，空間充足可搭載機器人設備箱。I-55 路況良好，沿途有休息站可停靠。
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== DAY 3-5: 4/19-20 PREP ==================== -->
+        <div class="phase-divider">
+            <span class="phase-label">🔧 第二階段 · 賽前準備 · 調整＆練習</span>
+        </div>
+
+        <div class="day-card">
+            <div class="day-date">
+                <div class="day-num">19</div>
+                <div class="day-month">April</div>
+                <div class="day-weekday">SUN</div>
+            </div>
+            <div class="day-content">
+                <span class="day-tag tag-prep">DAY 3 · 調適＆練習</span>
+                <div class="day-title">🔩 調整時差 · 找當地高中隊練習 Day 1</div>
+                <ul class="day-items">
+                    <li><span class="time-badge">08:00</span> 早餐後進行輕度活動，逐步調整生理時鐘</li>
+                    <li><span class="time-badge">10:00</span> 前往當地高中隊伍提供的場地進行<strong>友誼練習賽</strong></li>
+                    <li>與美國當地高中隊交流策略、觀摩他們的機器人設計</li>
+                    <li>機器人組裝確認、零件清點、飛行途中是否有損壞</li>
+                    <li><span class="time-badge">12:00</span> 午餐（可與當地隊伍一起用餐，增進交流）</li>
+                    <li><span class="time-badge">14:00</span> 下午繼續練習、程式微調、策略演練</li>
+                    <li><span class="time-badge">18:00</span> 晚餐：推薦 <strong>Pappy's Smokehouse</strong> — 聖路易斯招牌 BBQ 肋排
+                    </li>
+                    <li>晚上早休息，持續調時差</li>
+                </ul>
+                <div class="note-box">
+                    <span class="note-icon">🤝</span> 與當地隊伍練習不僅能適應場地，更能建立國際友誼，說不定比賽中還能成為聯盟夥伴！
+                </div>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-date">
+                <div class="day-num">20</div>
+                <div class="day-month">April</div>
+                <div class="day-weekday">MON</div>
+            </div>
+            <div class="day-content">
+                <span class="day-tag tag-prep">DAY 4 · 調適＆練習</span>
+                <div class="day-title">⚙️ 調整時差 · 找當地高中隊練習 Day 2</div>
+                <ul class="day-items">
+                    <li><span class="time-badge">09:00</span> 早餐後前往練習場地</li>
+                    <li><span class="time-badge">10:00</span> 與當地高中隊進行<strong>模擬對抗賽</strong>，測試完整比賽流程</li>
+                    <li>Autonomous（自動階段）反覆測試與微調</li>
+                    <li>Driver Control（手動階段）操控手密集訓練</li>
+                    <li><span class="time-badge">12:00</span> 午餐休息</li>
+                    <li><span class="time-badge">14:00</span> 機器人最終調校：感應器校準、程式最終版本確認</li>
+                    <li>策略會議：正式比賽規則再確認、角色分工</li>
+                    <li>前往附近 <strong>Home Depot / Lowe's</strong> 補充備用零件與消耗品</li>
+                    <li><span class="time-badge">18:00</span> 晚餐：推薦 <strong>Ted Drewes Frozen Custard</strong> —
+                        聖路易斯傳說等級冰淇淋</li>
+                    <li>器材分類整理，pit 箱打包完畢，早睡備戰</li>
+                </ul>
+                <div class="note-box red-note">
+                    <span class="note-icon">⚠️</span> VEX V5 高中組規定機器人須符合 18" x 18" x 18" 尺寸與重量限制。請於正式 inspection
+                    前自行進行完整檢查！
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== COMPETITION: 4/21-24 ==================== -->
+        <div class="phase-divider">
+            <span class="phase-label">🏆 第三階段 · 正式比賽（4天）</span>
+        </div>
+
+        <div class="day-card competition">
+            <div class="day-date">
+                <div class="day-num">21</div>
+                <div class="day-month">April</div>
+                <div class="day-weekday">TUE</div>
+            </div>
+            <div class="day-content">
+                <span class="day-tag tag-comp">比賽 DAY 1</span>
+                <div class="day-title">🤖 VEX V5 世錦賽開幕 · Check-in & Practice</div>
+                <ul class="day-items">
+                    <li><span class="time-badge">07:00</span> 早起抵達場館，完成 Pit 設置</li>
+                    <li>報到（Check-in）、領取參賽資料與團隊識別證</li>
+                    <li>機器人正式 <strong>Inspection</strong>（尺寸、重量、安全檢查）</li>
+                    <li><strong>Practice Matches</strong>（練習賽）：熟悉正式場地規格</li>
+                    <li>Driver's Meeting 開幕說明</li>
+                    <li>觀察其他強隊的機器人設計與策略</li>
+                    <li>Pit 期間進行微調與維修</li>
+                    <li>晚上回飯店檢討與準備明天正式對戰</li>
+                </ul>
+                <div class="note-box red-note">
+                    <span class="note-icon">🔴</span> 開幕日重點：確保 Inspection 一次通過，利用 Practice Matches 儘快熟悉場地。
+                </div>
+            </div>
+        </div>
+
+        <div class="day-card competition">
+            <div class="day-date">
+                <div class="day-num">22</div>
+                <div class="day-month">April</div>
+                <div class="day-weekday">WED</div>
+            </div>
+            <div class="day-content">
+                <span class="day-tag tag-comp">比賽 DAY 2</span>
+                <div class="day-title">🤖 資格賽（Qualification Matches）</div>
+                <ul class="day-items">
+                    <li><span class="time-badge">07:30</span> 抵達場館，早場準備</li>
+                    <li><strong>資格賽（Qualification Matches）</strong>開始：每場都影響積分排名！</li>
+                    <li>每場比賽間隔利用 Pit 時間進行機器人維修、程式微調</li>
+                    <li><strong>Robot Skills Challenge</strong>：Autonomous + Driver 兩種挑戰</li>
+                    <li>午餐時間策略討論，分析對手數據</li>
+                    <li>觀察潛在聯隊夥伴（Alliance Partners），記錄強隊</li>
+                    <li>Judge Interview（評審訪問）：展示工程日誌與團隊故事</li>
+                </ul>
+                <div class="note-box red-note">
+                    <span class="note-icon">🔴</span> 每一場資格賽都很重要！積分決定聯隊挑選順序。Skills 分數也是獨立獎項的關鍵。
+                </div>
+            </div>
+        </div>
+
+        <div class="day-card competition">
+            <div class="day-date">
+                <div class="day-num">23</div>
+                <div class="day-month">April</div>
+                <div class="day-weekday">THU</div>
+            </div>
+            <div class="day-content">
+                <span class="day-tag tag-comp">比賽 DAY 3</span>
+                <div class="day-title">🤖 持續資格賽 · 聯盟確認</div>
+                <ul class="day-items">
+                    <li>繼續資格賽，爭取更高積分排名</li>
+                    <li>持續進行 Robot Skills Challenge 衝刺</li>
+                    <li>與其他隊伍交流、確認聯盟合作意向</li>
+                    <li>預賽結束後確認名次，分析晉級路線</li>
+                    <li>Alliance Selection 前的最後策略準備</li>
+                    <li><strong>Design Award / Excellence Award</strong> 評選面試</li>
+                    <li>晚上準備明天淘汰賽策略</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="day-card competition">
+            <div class="day-date">
+                <div class="day-num">24</div>
+                <div class="day-month">April</div>
+                <div class="day-weekday">FRI</div>
+            </div>
+            <div class="day-content">
+                <span class="day-tag tag-comp">比賽 DAY 4</span>
+                <div class="day-title">🏆 聯隊挑選 · 淘汰賽 · 頒獎典禮</div>
+                <ul class="day-items">
+                    <li><strong>Alliance Selection</strong>：根據排名進行聯隊組合</li>
+                    <li>Quarter-finals → Semi-finals → Finals 淘汰賽</li>
+                    <li>每輪淘汰賽間持續維修與策略調整</li>
+                    <li>Design Award / Excellence Award 公佈</li>
+                    <li>閉幕典禮與頒獎 🏆</li>
+                    <li>賽後收拾 Pit、機器人裝箱</li>
+                    <li>與各國隊伍交流合影，收集 VEX 貼紙/紀念品</li>
+                </ul>
+                <div class="note-box red-note">
+                    <span class="note-icon">🎉</span> 不論結果如何，四天比賽都是珍貴的國際交流經驗！為自己鼓掌！
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== 4/25 STL → CHI ==================== -->
+        <div class="phase-divider">
+            <span class="phase-label">🌉 第四階段 · 觀光＆回程</span>
+        </div>
+
+        <div class="day-card explore">
+            <div class="day-date">
+                <div class="day-num">25</div>
+                <div class="day-month">April</div>
+                <div class="day-weekday">SAT</div>
+            </div>
+            <div class="day-content">
+                <span class="day-tag tag-stl">DAY 9 · 聖路易斯導覽＆移動</span>
+                <div class="day-title">🌉 聖路易斯半日遊 → 遊覽車北返芝加哥</div>
+                <ul class="day-items">
+                    <li><span class="time-badge">08:00</span> 早餐後退房，行李上車</li>
+                    <li><span class="time-badge">08:30</span> <strong>Gateway Arch</strong> — 聖路易斯地標！在 Arch
+                        前方廣場拍攝團體照＆紀念照📸</li>
+                    <li>沿 Arch 公園散步，欣賞這座 192 公尺高的壯觀不鏽鋼拱門</li>
+                    <li><span class="time-badge">10:00</span> 沿密西西比河畔散步＆拍攝 Arch 倒影</li>
+                    <li><span class="time-badge">10:30</span> 備選行程：<strong>City Museum</strong> —
+                        聖路易斯最瘋狂的超創意互動博物館！由廢棄工廠改建，包含巨型攀爬結構、洞穴、滑梯、屋頂遊樂場，大人小孩都瘋狂（門票約 $18/人）</li>
+                    <li><span class="time-badge">11:30</span> 搭乘遊覽車出發前往芝加哥，沿 I-55 North（車程約 5 小時）</li>
+                    <li>途中享用午餐（休息站或 Springfield 停靠）</li>
+                    <li><span class="time-badge">17:00</span> 預計抵達芝加哥，入住市區飯店（推薦 Loop 或 Magnificent Mile 區）</li>
+                    <li><span class="time-badge">18:30</span> <strong>晚餐：Giordano's 或 Gino's East</strong> — 必吃芝加哥 Deep
+                        Dish 深盤披薩🍕（需等約 45 分鐘，值得！）</li>
+                    <li>晚上可沿 Chicago Riverwalk 散步，欣賞夜景</li>
+                </ul>
+                <div class="note-box">
+                    <span class="note-icon">📸</span> Gateway Arch 早上人潮較少，拍照效果最佳。建議從靠密西西比河側拍攝，可拍到 Arch 完整弧形！
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== 4/26 CHICAGO ==================== -->
+        <div class="day-card chicago">
+            <div class="day-date">
+                <div class="day-num">26</div>
+                <div class="day-month">April</div>
+                <div class="day-weekday">SUN</div>
+            </div>
+            <div class="day-content">
+                <span class="day-tag tag-explore">DAY 10 · 芝加哥觀光</span>
+                <div class="day-title">🏙️ 芝加哥全日觀光 · 博物館＆芝加哥大道</div>
+                <ul class="day-items">
+                    <li><span class="time-badge">09:00</span> <strong>早上：芝加哥科學與工業博物館（Museum of Science and Industry,
+                            MSI）</strong></li>
+                    <li>🚢 必看！<strong>U-505 潛水艇</strong> — 二戰期間捕獲的德國 U 型潛艇，全球唯一公開展示，可進入艇內參觀！</li>
+                    <li>🌪️ 必看！<strong>龍捲風模擬體驗</strong> — 高達 12 公尺的室內龍捲風，近距離觀察龍捲風形成過程，別處看不到！</li>
+                    <li>其他亮點：波音 727 實體客機、煤礦坑探險、鏡像迷宮、模擬暴風雨體驗</li>
+                    <li>西半球最大的科學博物館，超過 35,000 件展品，約 3 小時參觀</li>
+                    <li><span class="time-badge">12:30</span> 午餐：博物館區附近用餐</li>
+                    <li><span class="time-badge">14:00</span> <strong>下午：芝加哥大道 Magnificent Mile</strong>（密西根大道 N.
+                        Michigan Ave）</li>
+                    <li>全美最知名的購物大道之一，從芝加哥河延伸到 Oak Street</li>
+                    <li>逛 Nike Chicago、Apple Michigan Ave、Adidas 旗艦店</li>
+                    <li>☕ <strong>Starbucks Reserve Roastery Chicago</strong> — ⭐ <strong>全世界最大的星巴克！</strong>佔地超過 3,500
+                        坪（35,000 sq ft），五層樓高，獨家精品咖啡、調酒吧、烘焙坊，必去朝聖！</li>
+                    <li>途經<strong>芝加哥水塔</strong>（Chicago Water Tower）— 1871年芝加哥大火唯一倖存建築</li>
+                    <li><span class="time-badge">16:00</span> <strong>Millennium Park</strong> —「大豆」Cloud Gate
+                        必拍照！周圍公共藝術欣賞</li>
+                    <li><span class="time-badge">17:00</span> <strong>360 Chicago 觀景台</strong>（John Hancock Center）—
+                        俯瞰芝加哥天際線與密西根湖</li>
+                    <li><span class="time-badge">18:30</span> 晚餐：推薦 <strong>Portillo's</strong> — 芝加哥經典 Chicago-style
+                        Hot Dog & Italian Beef</li>
+                    <li>晚餐後散步 Navy Pier（海軍碼頭），欣賞密西根湖夜景</li>
+                </ul>
+                <div class="note-box gold-note">
+                    <span class="note-icon">🛍️</span> Magnificent Mile 建議安排 2
+                    小時以上！除了購物，沿途建築也是一大看點。全球最大星巴克就在大道上，千萬別錯過！360 Chicago 的 TILT
+                    體驗（傾斜觀景窗）非常刺激！
+                </div>
+                <div class="note-box">
+                    <span class="note-icon">🚇</span> 今日不使用遊覽車！芝加哥市區景點集中，搭乘 <strong>CTA 地鐵（L Train）＆公車 + 步行</strong>
+                    即可輕鬆抵達各景點。也可使用 Uber/Lyft 叫車。建議購買 CTA 一日通行券（$5/人），無限搭乘超方便！
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== 4/27 CHICAGO → RETURN ==================== -->
+        <div class="phase-divider">
+            <span class="phase-label">✈ 最終階段 · 最後觀光＆回家</span>
+        </div>
+
+        <div class="day-card return">
+            <div class="day-date">
+                <div class="day-num">27</div>
+                <div class="day-month">April</div>
+                <div class="day-weekday">MON</div>
+            </div>
+            <div class="day-content">
+                <span class="day-tag tag-return">DAY 11 · 觀光＆回程</span>
+                <div class="day-title">🌆 上午觀光 · 傍晚 Outlet · 深夜飛回台灣</div>
+                <ul class="day-items">
+                    <li><span class="time-badge">09:00</span> 飯店退房，寄放行李</li>
+                    <li><span class="time-badge">09:30</span> <strong>早上觀光：芝加哥建築遊船（Architecture Boat Tour）</strong></li>
+                    <li>搭乘芝加哥河遊船，聽導覽員解說沿岸超過 40 棟經典建築（約 75 分鐘）</li>
+                    <li>被評為芝加哥排名第一的觀光體驗！</li>
+                    <li><span class="time-badge">11:30</span> 下船後可散步經過 <strong>Art Institute of
+                            Chicago</strong>（芝加哥藝術學院）外觀拍照</li>
+                    <li><span class="time-badge">12:00</span> 午餐：<strong>Lou Malnati's</strong> — 另一家經典芝加哥深盤披薩名店</li>
+                    <li><span class="time-badge">13:30</span> <strong>下午自由活動</strong>：可選擇再逛 Millennium
+                        Park、書店、咖啡廳，或補買伴手禮</li>
+                    <li><span class="time-badge">15:30</span> 取回行李，搭遊覽車前往 <strong>Fashion Outlets of Chicago</strong>
+                    </li>
+                    <li><span class="time-badge">16:00</span> <strong>Fashion Outlets of Chicago</strong> — 位於 ORD
+                        機場附近（Rosemont），交通便利！</li>
+                    <li>Nike Factory、Adidas Outlet、Coach、Michael Kors、Tommy Hilfiger 等品牌</li>
+                    <li>還有 H&M、Forever 21、Converse 等學生最愛品牌</li>
+                    <li><span class="time-badge">19:00</span> 結束購物，搭遊覽車前往 O'Hare 機場（約 10 分鐘車程）</li>
+                    <li><span class="time-badge">19:30</span> 抵達 ORD Terminal 5，辦理登機、托運行李</li>
+                    <li>安檢後在免稅商店最後採購：Garrett Popcorn 芝加哥爆米花 🍿</li>
+                    <li><span class="time-badge">23:30</span> 搭乘<strong>長榮航空 BR55</strong> 直飛台灣（飛行約 16 小時）</li>
+                </ul>
+                <div class="note-box">
+                    <span class="note-icon">🛍️</span> Fashion Outlets of Chicago 距離 ORD 機場僅 10 分鐘車程，是回程前最棒的購物站！建議預留
+                    2.5~3 小時逛街。
+                </div>
+            </div>
+        </div>
+
+        <!-- ARRIVAL -->
+        <div class="day-card" style="opacity: 0.7;">
+            <div class="day-date" style="border-left-color: #888;">
+                <div class="day-num" style="color: #888;">29</div>
+                <div class="day-month">April</div>
+                <div class="day-weekday">WED</div>
+            </div>
+            <div class="day-content">
+                <span class="day-tag" style="background: rgba(255,255,255,0.08); color: #888;">抵達台灣</span>
+                <div class="day-title">🛬 抵達桃園國際機場</div>
+                <ul class="day-items">
+                    <li><span class="time-badge">05:25</span> 預計抵達桃園機場（台北時間 4/29 清晨）</li>
+                    <li>入境通關、提領行李與機器人設備</li>
+                    <li>滿載回憶與國際經驗凱旋歸來！🏆</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- TIPS SECTION -->
+    <div style="background: #e8ecf1; padding: 60px 20px;">
+        <div class="section-header">
+            <h2>旅遊實用提示</h2>
+            <div class="line"></div>
+        </div>
+        <div class="tips-section">
+            <div class="tip-card">
+                <div class="tip-icon">�</div>
+                <div class="tip-title">交通方式</div>
+                <div class="tip-text">全程搭乘包租遊覽車，空間充足可搭載機器人設備箱與行李。芝加哥至聖路易斯走 I-55 幹道，路況良好，車程約 5 小時。遊覽車在比賽期間也會提供場館接送服務。
+                </div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">🏨</div>
+                <div class="tip-title">住宿推薦</div>
+                <div class="tip-text">聖路易斯比賽期間建議訂靠近 America's Center 的飯店。芝加哥推薦 Loop 或 Magnificent Mile
+                    區。可透過學校團體名義訂房取得優惠價。早訂早省！</div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">🤝</div>
+                <div class="tip-title">當地練習</div>
+                <div class="tip-text">提前透過 VEX Forum 或 RobotEvents.com 聯繫聖路易斯當地高中隊。美國隊伍通常非常樂意接待國際隊伍練習。記得帶台灣紀念品交流！</div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">💰</div>
+                <div class="tip-title">預算規劃</div>
+                <div class="tip-text">聖路易斯生活費較低，大量景點免費。芝加哥消費略高。建議準備每人每天 $80-100 USD 生活費（含餐飲、交通、門票）。Outlet 購物另外預留預算。
+                </div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">📱</div>
+                <div class="tip-title">必備 App</div>
+                <div class="tip-text">Google
+                    Maps（離線下載）、Waze（美國公路導航）、GasBuddy（找便宜加油站）、OpenTable（餐廳訂位）、RobotEvents.com（比賽資訊與即時成績）。</div>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">🌤️</div>
+                <div class="tip-title">四月天氣</div>
+                <div class="tip-text">聖路易斯 4 月氣溫約 12-22°C，可能有午後陣雨。芝加哥湖邊風大，約 8-18°C。建議攜帶薄外套、防風外套與摺疊傘。比賽場館內冷氣偏強，建議帶薄長袖。
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        VEX V5 Robotics World Championship 2026 · High School Division · 台灣高中隊加油！🏆
+    </footer>
+
+</body>
+
+</html>
